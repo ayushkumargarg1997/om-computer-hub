@@ -124,4 +124,56 @@ document.addEventListener('DOMContentLoaded', () => {
     if (track) {
         track.innerHTML += track.innerHTML;
     }
+
+    // Futuristic Hero Slider Logic
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+
+    if (slides.length > 0) {
+        let currentSlide = 0;
+        let slideInterval;
+
+        const goToSlide = (index) => {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+
+            currentSlide = (index + slides.length) % slides.length;
+
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        };
+
+        const nextSlide = () => goToSlide(currentSlide + 1);
+        const prevSlide = () => goToSlide(currentSlide - 1);
+
+        const startSlider = () => {
+            slideInterval = setInterval(nextSlide, 5000); // Auto-slide every 5 seconds
+        };
+
+        const resetSlider = () => {
+            clearInterval(slideInterval);
+            startSlider();
+        };
+
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            resetSlider();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            resetSlider();
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+                resetSlider();
+            });
+        });
+
+        startSlider();
+    }
 });

@@ -35,22 +35,65 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero-futuristic">
-            <div class="hero-overlay"></div>
-            <div class="container hero-content text-center">
-                <h1 class="hero-title slide-up">
-                    Pc Support For <span class="highlight">Home</span> And <span class="highlight">Office</span>
-                </h1>
-                <h2 class="hero-subtitle slide-up" style="animation-delay: 0.2s">
-                    <span class="highlight">Expert</span> Solutions to <span class="highlight">Every</span> Problems
-                </h2>
-            </div>
-            <div class="services-transition">
-                <div class="transition-btn fade-in" style="animation-delay: 0.6s">
-                    <i class="fas fa-plus"></i>
+        <!-- Futuristic Hero Slider -->
+        <section id="home" class="hero-slider">
+            <div class="slider-container">
+                <!-- Slide 1 -->
+                <div class="slide active fade-in-slide">
+                    <img src="assets/img/emitra.jpg" alt="E-Mitra & Aadhar Services">
+                    <div class="slide-overlay">
+                        <div class="slide-content text-center">
+                            <h1 class="slide-title">Complete <span class="highlight-glow">E-Mitra</span> & Aadhar
+                                Solutions</h1>
+                            <p class="slide-text">Govt Exam Forms, Document Updates, & Everyday Registrations</p>
+                            <a href="#services" class="slide-btn">Explore Services</a>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="transition-text fade-in" style="animation-delay: 0.8s">Our Services</h3>
+
+                <!-- Slide 2 -->
+                <div class="slide fade-in-slide">
+                    <img src="assets/img/rscit_banner.jpg" alt="RS-CIT Training">
+                    <div class="slide-overlay">
+                        <div class="slide-content text-center">
+                            <h1 class="slide-title">Authorized <span class="highlight-glow">RS-CIT</span> Training
+                                Center</h1>
+                            <p class="slide-text">Build Your Digital Future With Certified Computer Education</p>
+                            <a href="#rscit-hub" class="slide-btn">View Courses</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="slide fade-in-slide">
+                    <img src="assets/img/insurance.jpg" alt="Insurance Services">
+                    <div class="slide-overlay">
+                        <div class="slide-content text-center">
+                            <h1 class="slide-title">Comprehensive <span class="highlight-glow">Insurance</span> Coverage
+                            </h1>
+                            <p class="slide-text">Life, Health, Vehicle & Property Insurance Tailored For You</p>
+                            <a href="#services" class="slide-btn">Get A Quote</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slider Controls -->
+            <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+
+            <!-- Slider Indicators -->
+            <div class="slider-dots">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+            </div>
+
+            <div class="services-transition">
+                <div class="transition-btn fade-in" style="animation-delay: 1.2s"
+                    onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">
+                    <i class="fas fa-arrow-down"></i>
+                </div>
             </div>
         </section>
 

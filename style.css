@@ -128,108 +128,197 @@ p {
     width: 100%;
 }
 
-/* Futuristic Hero Section */
-.hero-futuristic {
+/* Futuristic Hero Slider */
+.hero-slider {
     position: relative;
-    padding: 120px 0 100px;
-    background-image: url('assets/img/hero_bg.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    /* Parallax effect */
-    min-height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    height: 85vh;
+    /* Large cinematic feel */
+    min-height: 500px;
     overflow: hidden;
+    background-color: #000;
 }
 
-.hero-overlay {
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.65);
+    opacity: 0;
+    transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s ease-out;
+    transform: scale(1.05);
+    /* Slight zoom-in effect on active */
     z-index: 1;
 }
 
-.hero-content {
-    position: relative;
+.slide.active {
+    opacity: 1;
+    transform: scale(1);
     z-index: 2;
-    transform: translateY(-20px);
 }
 
-.hero-title,
-.hero-subtitle {
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 168, 0.7) 0%, rgba(0, 0, 0, 0.6) 100%);
+    /* Futuristic blue tint */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide-content {
+    max-width: 800px;
+    padding: 0 30px;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.8s ease-out 0.4s;
+    /* Delays text entry slightly after image slide */
+}
+
+.slide.active .slide-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.slide-title {
     font-size: 3.5rem;
     font-weight: 800;
     color: white;
-    line-height: 1.3;
     margin-bottom: 20px;
-    letter-spacing: 0.5px;
-    text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
+    line-height: 1.2;
+    text-shadow: 2px 4px 15px rgba(0, 0, 0, 0.6);
 }
 
-.hero-subtitle {
-    font-size: 3.2rem;
+.slide-text {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 35px;
+    font-weight: 300;
 }
 
-.highlight {
-    background-color: #1a40ff;
-    /* Bright blue highlight */
-    color: white;
-    padding: 0 12px;
+.highlight-glow {
+    color: #00d2ff;
+    /* Cyberpunk cyan */
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.8), 0 0 20px rgba(0, 210, 255, 0.4);
+    font-weight: 900;
+}
+
+.slide-btn {
     display: inline-block;
-    border-radius: 4px;
-    box-shadow: 0 4px 15px rgba(26, 64, 255, 0.4);
-    transition: transform var(--transition-fast), background-color var(--transition-fast);
+    padding: 15px 40px;
+    background: transparent;
+    border: 2px solid #00d2ff;
+    color: #00d2ff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
 }
 
-.highlight:hover {
+.slide-btn:hover {
+    background: #00d2ff;
+    color: #000;
+    box-shadow: 0 0 25px rgba(0, 210, 255, 0.6);
     transform: scale(1.05);
-    background-color: #335cff;
+}
+
+/* Slider Controls */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider-btn:hover {
+    background: rgba(0, 210, 255, 0.4);
+    border-color: #00d2ff;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
+}
+
+.prev-btn {
+    left: 30px;
+}
+
+.next-btn {
+    right: 30px;
+}
+
+/* Slider Dots */
+.slider-dots {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.dot.active {
+    background: #00d2ff;
+    transform: scale(1.3);
+    box-shadow: 0 0 10px #00d2ff;
 }
 
 .services-transition {
     position: absolute;
     bottom: -1px;
     width: 100%;
-    z-index: 3;
+    z-index: 15;
     display: flex;
     flex-direction: column;
     align-items: center;
     background: linear-gradient(to bottom, transparent, var(--primary-blue));
     padding-top: 40px;
-    padding-bottom: 20px;
-}
-
-.transition-btn {
-    background-color: #00b0ca;
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    box-shadow: 0 0 20px rgba(0, 176, 202, 0.6);
-    cursor: pointer;
-    margin-bottom: 15px;
-    transition: transform var(--transition-fast);
-}
-
-.transition-btn:hover {
-    transform: scale(1.15) rotate(90deg);
-}
-
-.transition-text {
-    color: white;
-    font-size: 2rem;
-    font-weight: 700;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* Base Flex Layout */

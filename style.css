@@ -813,6 +813,41 @@ p {
         gap: 20px;
     }
 
+    /* Slider Mobile Fixes */
+    .hero-slider {
+        height: 65vh;
+        min-height: 400px;
+    }
+
+    .slide-title {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    .slide-text {
+        font-size: 1.1rem;
+        margin-bottom: 25px;
+    }
+
+    .slide-btn {
+        padding: 12px 30px;
+        font-size: 0.95rem;
+    }
+
+    .slider-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+
+    .prev-btn {
+        left: 15px;
+    }
+
+    .next-btn {
+        right: 15px;
+    }
+
     .enquiry-content h2,
     .section-title {
         font-size: 2.2rem;
@@ -832,5 +867,20 @@ p {
 
     .mt-5 {
         margin-top: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .slide-title {
+        font-size: 1.6rem;
+    }
+
+    .slide-text {
+        font-size: 1rem;
+    }
+
+    .slider-btn {
+        display: none;
+        /* Hide arrows on very small screens to save space, relies on dots/swipe */
     }
 }
